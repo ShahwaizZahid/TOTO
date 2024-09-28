@@ -6,7 +6,7 @@ import '../components/my_textfield.dart';
 
 class RegisterPage extends StatefulWidget {
   final void Function()? onTap;
-  const RegisterPage({super.key, this.onTap});
+  const RegisterPage({super.key, required this.onTap});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();

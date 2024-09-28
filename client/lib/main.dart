@@ -1,3 +1,4 @@
+import 'package:client/auth/login_or_register.dart';
 import 'package:client/pages/login_page.dart';
 import 'package:client/themes/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
         theme: Provider.of<ThemeProvider>(context).themeData,
-      home: LoginPage(
-        onTap: (){},
-      ),
+      home: LoginOrRegister()
     );
   }
 }
