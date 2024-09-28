@@ -1,5 +1,6 @@
 import 'package:client/components/my_button.dart';
 import 'package:client/components/my_textfield.dart';
+import 'package:client/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -14,6 +15,10 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailcontroller = TextEditingController();
   final TextEditingController passwordcontroller = TextEditingController();
 
+  void login(){
+
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>  const HomePage()));
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SizedBox(height: 10),
             //  Signin Button
-            MyButton(onTap: () {}, text: 'Sign In'),
+            MyButton(onTap: login, text: 'Sign In'),
             SizedBox(height: 25),
             //Not have an account
             Row(
