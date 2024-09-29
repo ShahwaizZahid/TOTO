@@ -2,6 +2,7 @@ import 'package:client/components/my_current_loaction.dart';
 import 'package:client/components/my_description_box.dart';
 import 'package:client/components/my_drawer.dart';
 import 'package:client/components/my_silver_app_bar.dart';
+import 'package:client/components/my_tab_bar.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,7 +12,19 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin{
+  late TabController _tabController;
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _tabController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +33,7 @@ class _HomePageState extends State<HomePage> {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
          MySilverAppBar(
-            title: Text('Title'),
+            title:MyTabBar(tabController: _tabController),
             child:  Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
