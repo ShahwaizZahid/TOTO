@@ -3,6 +3,7 @@ import 'package:client/components/my_description_box.dart';
 import 'package:client/components/my_drawer.dart';
 import 'package:client/components/my_silver_app_bar.dart';
 import 'package:client/components/my_tab_bar.dart';
+import 'package:client/models/food.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,13 +18,28 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: FoodCategory.values.length, vsync: this);
   }
   @override
   void dispose() {
     // TODO: implement dispose
     _tabController.dispose();
     super.dispose();
+  }
+
+  List<Food> _filterMenuByCategory (FoodCategory category, List<Food>fullMenu ){
+return fullMenu.where((food)=> food.category == category ).toList();
+  }
+
+  List<Widget> getFoodInThisCategory(List<Food>fullMenu){
+    return FoodCategory.values.map((category){
+      List<Food> categoryMenu = _filterMenuByCategory(category, fullMenu);
+      return ListView.builder(
+        itemCount: categoryMenu.length,
+        itemBuilder: (context, index){
+
+      },);
+    }).toList();
   }
   @override
   Widget build(BuildContext context) {
@@ -48,10 +64,15 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             ), // Pass a String instead of a Text widget
           ),
         ],
-        body: Container(
-          color: Colors.blue,
-          // Add your content here
-        ),
+        body: TabBarView(
+            controller: _tabController,
+            children: [
+          Text('burger'),
+          Text('salads'),
+              Text('sides'),
+              Text('desserts'),
+              Text('drinks')
+        ])
       ),
     );
   }
