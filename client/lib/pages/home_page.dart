@@ -6,6 +6,7 @@ import 'package:client/components/my_silver_app_bar.dart';
 import 'package:client/components/my_tab_bar.dart';
 import 'package:client/models/food.dart';
 import 'package:client/models/restaurant.dart';
+import 'package:client/pages/food_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -46,7 +47,10 @@ class _HomePageState extends State<HomePage>
         padding: EdgeInsets.zero,
         itemBuilder: (context, index) {
           final food = categoryMenu[index];
-          return MyFoodTile(food: food, onTap: (){},);
+          return MyFoodTile(
+            food: food,
+            onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> FoodPage(food: food))),
+          );
         },
       );
     }).toList();
