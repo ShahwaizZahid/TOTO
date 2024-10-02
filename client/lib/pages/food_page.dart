@@ -1,7 +1,10 @@
 import 'package:client/components/my_button.dart';
+import 'package:client/main.dart';
 import 'package:client/models/food.dart';
+import 'package:client/models/restaurant.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class FoodPage extends StatefulWidget {
   final Food food;
@@ -17,6 +20,20 @@ class FoodPage extends StatefulWidget {
 }
 
 class _FoodPageState extends State<FoodPage> {
+
+  void addToCart(Food food , Map<Addon , bool> selectedAddons ){
+    Navigator.pop(context);
+
+
+    List<Addon> currentSelectedAddons = [];
+    for( Addon addon in widget.food.availableAddons){
+      if(widget.selectedAddons[addon] == true){
+        currentSelectedAddons.add(addon);
+      }
+    }
+  context.read<Restaurant>().addToCard(food, currentSelectedAddons);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -90,7 +107,7 @@ class _FoodPageState extends State<FoodPage> {
                     ],
                   ),
                 ),
-                MyButton(onTap: () {}, text: "Add to card"),
+                MyButton(onTap: ()=> addToCart(widget.food, widget.selectedAddons), text: "Add to card"),
                 SizedBox(
                   height: 25,
                 )
@@ -104,10 +121,11 @@ class _FoodPageState extends State<FoodPage> {
             child: Container(
               margin: const EdgeInsets.only(left: 25),
               decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Theme.of(context).colorScheme.secondary
-              ),
-              child: IconButton(onPressed: ()=> Navigator.pop(context), icon: Icon(Icons.arrow_back_ios_rounded)),
+                  shape: BoxShape.circle,
+                  color: Theme.of(context).colorScheme.secondary),
+              child: IconButton(
+                  onPressed: () => Navigator.pop(context),
+                  icon: Icon(Icons.arrow_back_ios_rounded)),
             ),
           ),
         )
