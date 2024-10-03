@@ -12,20 +12,45 @@ class CartPage extends StatelessWidget {
       final userCart = retanurant.cart;
       return Scaffold(
         appBar: AppBar(
-          title: Text('cart'),
+          title: Text('Cart'),
+          centerTitle: true,
           backgroundColor: Colors.transparent,
           foregroundColor: Theme.of(context).colorScheme.inversePrimary,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                            title:
+                                const Text('Are you sure you want to clear the cart'),
+                            actions: [
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text('cancel')),
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    context.read<Restaurant>().clearCart();
+                                  },
+                                  child: const Text('yes'))
+                            ],
+                          ));
+                },
+                icon: Icon(Icons.delete))
+          ],
         ),
         body: Column(
           children: [
             Expanded(
               child: ListView.builder(
-                itemCount: userCart.length,
-                itemBuilder: (context, index) {
-                  final cartItem = userCart[index];
-                  return MyCartTile(cartItem: cartItem);
-                }
-              ),
+                  itemCount: userCart.length,
+                  itemBuilder: (context, index) {
+                    final cartItem = userCart[index];
+                    return MyCartTile(cartItem: cartItem);
+                  }),
             )
           ],
         ),

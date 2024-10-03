@@ -45,7 +45,7 @@ class MyCartTile extends StatelessWidget {
                         style: TextStyle(
                             color: Theme.of(context).colorScheme.primary),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       MyQuantitySelector(
                           quantity: cartItem.quantity,
                           food: cartItem.food,
