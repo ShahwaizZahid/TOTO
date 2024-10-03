@@ -347,6 +347,8 @@ class Restaurant extends ChangeNotifier {
 
 //   G E T T E R S
   List<Food> get menu => _menu;
+ List<CardItem> get cart => _card;
+
 
 // O P E R A T I O N S
   final List<CardItem> _card = [];
@@ -354,17 +356,21 @@ class Restaurant extends ChangeNotifier {
 // Add to cart
   void addToCard(Food food, List<Addon> selectedAddons) {
     // Check if the food with the same addons already exists in the cart
+
+    print(_card.length);
     CardItem? cardItem = _card.firstWhereOrNull((item) {
       bool isSameFood = item.food == food;
       bool isAddons =
           ListEquality().equals(item.selectedAddons, selectedAddons);
       return isSameFood && isAddons;
     });
+    print(cardItem);
     if (cardItem != null) {
       cardItem.quantity++;
     } else {
       _card.add(CardItem(food: food, selectedAddons: selectedAddons));
     }
+    print(_card.length);
     notifyListeners();
   }
 
@@ -415,5 +421,5 @@ void clearCart(){
     notifyListeners();
 }
 
-//
+
 }

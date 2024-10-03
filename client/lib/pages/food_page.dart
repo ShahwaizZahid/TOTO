@@ -20,18 +20,15 @@ class FoodPage extends StatefulWidget {
 }
 
 class _FoodPageState extends State<FoodPage> {
-
-  void addToCart(Food food , Map<Addon , bool> selectedAddons ){
+  void addToCart(Food food, Map<Addon, bool> selectedAddons) {
     Navigator.pop(context);
-
-
     List<Addon> currentSelectedAddons = [];
-    for( Addon addon in widget.food.availableAddons){
-      if(widget.selectedAddons[addon] == true){
+    for (Addon addon in widget.food.availableAddons) {
+      if (widget.selectedAddons[addon] == true) {
         currentSelectedAddons.add(addon);
       }
     }
-  context.read<Restaurant>().addToCard(food, currentSelectedAddons);
+    context.read<Restaurant>().addToCard(food, currentSelectedAddons);
   }
 
   @override
@@ -50,7 +47,7 @@ class _FoodPageState extends State<FoodPage> {
                     children: [
                       Text(
                         widget.food.name,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
                       Text(
@@ -107,8 +104,10 @@ class _FoodPageState extends State<FoodPage> {
                     ],
                   ),
                 ),
-                MyButton(onTap: ()=> addToCart(widget.food, widget.selectedAddons), text: "Add to card"),
-                SizedBox(
+                MyButton(
+                    onTap: () => addToCart(widget.food, widget.selectedAddons),
+                    text: "Add to card"),
+                const SizedBox(
                   height: 25,
                 )
               ],
