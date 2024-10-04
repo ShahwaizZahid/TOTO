@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage>
                       MyCurrentLoaction(),
                       MyDescriptionBox()
                     ],
-                  ), // Pass a String instead of a Text widget
+                  ), 
                 ),
               ],
           body: Consumer<Restaurant>(

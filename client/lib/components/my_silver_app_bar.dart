@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class MySilverAppBar extends StatelessWidget {
   final Widget child;
-  final Widget title; // Changed to String for the title
+  final Widget title; 
 
   const MySilverAppBar({
     super.key,
