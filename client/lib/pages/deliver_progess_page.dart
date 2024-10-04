@@ -34,7 +34,11 @@ class DeliveryProgessPage extends StatelessWidget {
             decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.background,
                 shape: BoxShape.circle),
-            child: IconButton(onPressed: () {}, icon: Icon(Icons.person)),
+            child: IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.person,
+                  color: Theme.of(context).colorScheme.primary),
+            ),
           ),
           SizedBox(width: 10),
           Column(
@@ -60,14 +64,22 @@ class DeliveryProgessPage extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.background,
                     shape: BoxShape.circle),
-                child: IconButton(onPressed: () {}, icon: Icon(Icons.message) , color: Theme.of(context).colorScheme.primary,),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.message),
+                  color: Theme.of(context).colorScheme.primary,
+                ),
               ),
               SizedBox(width: 10),
               Container(
                 decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.background,
                     shape: BoxShape.circle),
-                child: IconButton(onPressed: () {}, icon: Icon(Icons.call), color: Colors.green,),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.call),
+                  color: Colors.green,
+                ),
               ),
             ],
           )

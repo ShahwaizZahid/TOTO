@@ -7,7 +7,9 @@ class MyCurrentLoaction extends StatelessWidget {
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
-              title: Text("Your Loaction"),
+              title: Text("Your Loaction" , style: TextStyle(
+                color: Theme.of(context).colorScheme.primary,
+              )),
               content: TextField(
                 decoration: InputDecoration(hintText: "search address"),
               ),
@@ -37,7 +39,10 @@ class MyCurrentLoaction extends StatelessWidget {
             onTap: () => openLoactionBox(context),
             child: Row(
               children: [
-                Text('6901 Hollywood Blv'),
+                Text('6901 Hollywood Blv',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.inversePrimary,
+                ),),
                 Icon(Icons.keyboard_arrow_down_rounded),
               ],
             ),

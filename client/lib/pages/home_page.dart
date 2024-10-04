@@ -43,13 +43,14 @@ class _HomePageState extends State<HomePage>
       List<Food> categoryMenu = _filterMenuByCategory(category, fullMenu);
       return ListView.builder(
         itemCount: categoryMenu.length,
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         padding: EdgeInsets.zero,
         itemBuilder: (context, index) {
           final food = categoryMenu[index];
           return MyFoodTile(
             food: food,
-            onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> FoodPage(food: food))),
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => FoodPage(food: food))),
           );
         },
       );
@@ -69,13 +70,15 @@ class _HomePageState extends State<HomePage>
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Divider(
+
                           indent: 25,
                           endIndent: 25,
-                          color: Theme.of(context).colorScheme.secondary),
-                      MyCurrentLoaction(),
-                      MyDescriptionBox()
+                          color: Theme.of(context).colorScheme.secondary
+                      ),
+                      const MyCurrentLoaction(),
+                      const MyDescriptionBox()
                     ],
-                  ), 
+                  ),
                 ),
               ],
           body: Consumer<Restaurant>(

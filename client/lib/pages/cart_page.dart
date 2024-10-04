@@ -14,8 +14,10 @@ class CartPage extends StatelessWidget {
       builder: (context, retanurant, child) {
         final userCart = retanurant.cart;
         return Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.background,
           appBar: AppBar(
-            title: Text('Cart'),
+            title: Text('Cart', style: TextStyle(
+            ),),
             centerTitle: true,
             backgroundColor: Colors.transparent,
             foregroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -42,7 +44,7 @@ class CartPage extends StatelessWidget {
                               ],
                             ));
                   },
-                  icon: Icon(Icons.delete))
+                  icon: Icon( userCart.isEmpty ?Icons.shopping_cart :Icons.delete))
             ],
           ),
           body: Column(

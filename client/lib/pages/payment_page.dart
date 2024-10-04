@@ -58,7 +58,6 @@ class _PaymentPageState extends State<PaymentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.transparent,
@@ -87,12 +86,11 @@ class _PaymentPageState extends State<PaymentPage> {
               cvvCode = data.cvvCode;
             },
             formKey: formKey,
+
           ),
           const Spacer(),
           MyButton(onTap: () => userTappedPay(), text: 'Pay Now'),
-          SizedBox(
-            height: 25,
-          )
+          const SizedBox(height: 25)
         ],
       ),
     );

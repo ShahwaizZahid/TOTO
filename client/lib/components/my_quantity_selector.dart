@@ -36,7 +36,16 @@ class MyQuantitySelector extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: SizedBox(
-                width: 40, child: Center(child: Text(quantity.toString()))),
+              width: 40,
+              child: Center(
+                child: Text(
+                  quantity.toString(),
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.inversePrimary
+                  ),
+                ),
+              ),
+            ),
           ),
           GestureDetector(
             onTap: onIncrement,
